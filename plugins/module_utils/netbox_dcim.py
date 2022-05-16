@@ -30,6 +30,8 @@ NB_INTERFACE_TEMPLATES = "interface_templates"
 NB_INVENTORY_ITEMS = "inventory_items"
 NB_LOCATIONS = "locations"
 NB_MANUFACTURERS = "manufacturers"
+NB_MODULE_BAYS = "module_bays"
+NB_MODULE_BAY_TEMPLATES = "module_bay_templates"
 NB_PLATFORMS = "platforms"
 NB_POWER_FEEDS = "power_feeds"
 NB_POWER_OUTLETS = "power_outlets"
@@ -81,6 +83,8 @@ class NetboxDcimModule(NetboxModule):
         - inventory_items
         - locations
         - manufacturers
+        - module_bays
+        - module_bay_templates
         - platforms
         - power_feeds
         - power_outlets
