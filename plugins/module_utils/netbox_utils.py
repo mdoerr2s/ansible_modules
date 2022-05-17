@@ -57,6 +57,7 @@ API_APPS_ENDPOINTS = dict(
         "inventory_items",
         "locations",
         "manufacturers",
+        "modules",
         "module_bays",
         "module_bay_templates",
         "module_types",
@@ -217,6 +218,8 @@ CONVERT_TO_ID = {
     "lag": "interfaces",
     "manufacturer": "manufacturers",
     "master": "devices",
+    "module_type": "module_types",
+    "module_bay": "module_bays",
     "nat_inside": "ip_addresses",
     "nat_outside": "ip_addresses",
     "platform": "platforms",
@@ -310,6 +313,7 @@ ENDPOINT_NAME_MAPPING = {
     "ip_addresses": "ip_address",
     "locations": "location",
     "manufacturers": "manufacturer",
+    "modules": "module",
     "module_bays": "module_bay",
     "module_bay_templates": "module_bay_template",
     "module_types": "module_type",
@@ -415,6 +419,7 @@ ALLOWED_QUERY_PARAMS = {
     "lag": set(["name"]),
     "location": set(["slug"]),
     "manufacturer": set(["slug"]),
+    "module": set(["module_bay", "device"]),
     "module_bay": set(["name", "device"]),
     "module_bay_template": set(["name", "device_type"]),
     "module_type": set(["model"]),
@@ -1143,6 +1148,9 @@ class NetboxModule(object):
                         query_params = self._build_query_params(
                             k, data, user_query_params
                         )
+                    # check if better solution    
+                    elif k == "module_bay":
+                        query_params = {QUERY_TYPES.get(k, "name"): search}        
                     else:
                         query_params = {QUERY_TYPES.get(k, "q"): search}
                     query_id = self._nb_endpoint_get(nb_endpoint, query_params, k)
