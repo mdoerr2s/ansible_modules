@@ -1150,7 +1150,6 @@ class NetboxModule(object):
                         )
                     # check if better solution    
                     elif k == "module_bay":
-                        #query_params = {QUERY_TYPES.get(k, "name"): search}        
                         query_params = self._build_query_params(
                             k, data, user_query_params
                         )
