@@ -863,7 +863,7 @@ class NetboxModule(object):
             matches = query_params.intersection(set(child.keys()))
         else:
             matches = query_params.intersection(set(module_data.keys()))
-        
+
         for match in matches:
             if match in QUERY_PARAMS_IDS:
                 if child:
@@ -1155,7 +1155,7 @@ class NetboxModule(object):
                     elif k == "module_bay":
                         query_params = self._build_query_params(
                             k, data, user_query_params
-                        )    
+                        )
                     else:
                         query_params = {QUERY_TYPES.get(k, "q"): search}
                     query_id = self._nb_endpoint_get(nb_endpoint, query_params, k)
